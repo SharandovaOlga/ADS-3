@@ -16,12 +16,12 @@ switch (p) {
   return 3;
   default:
   return -1;
- }
+}
 }
 
 std::string infx2pstfx(std::string inf) {
- TStack<char> stack;
- std::string result;
+TStack<char> stack;
+std::string result;
 
 for (int i = 0; i < inf.length(); i++) {
   if ((inf[i] >= '0') && (inf[i] <= '9')) {
@@ -47,24 +47,24 @@ for (int i = 0; i < inf.length(); i++) {
            stack.pop();
     }
     stack.push(inf[i]);
-   }
- }
+  }
+}
 
- while (!stack.isEmpty()) {
+while (!stack.isEmpty()) {
         result += stack.get();
         result += ' ';
         stack.pop();
- }
+}
 
- while (result[result.length() - 1] == ' ') {
+while (result[result.length() - 1] == ' ') {
         result = result.substr(0, result.length()-1);
- }
+}
 
- return result;
+return result;
 }
 
 int eval(std::string pst) {
- TStack<int> stack;
+TStack<int> stack;
 
 for (int i = 0; i < pst.length(); i++) {
   if ((pst[i] >= '0') && (pst[i] <= '9')) {
@@ -85,6 +85,6 @@ for (int i = 0; i < pst.length(); i++) {
        stack.push(b / a);
       }
     }
- }
- return stack.get();
+}
+return stack.get();
 }
