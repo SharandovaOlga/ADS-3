@@ -3,19 +3,19 @@
 #include "tstack.h"
 
 int pr(char p) {
- switch (p) {
+switch (p) {
   case '(':
-   return 0;
+  return 0;
   case ')':
-   return 1;
+  return 1;
   case '+':
   case '-':
-   return 2;
+  return 2;
   case '*':
   case '/':
-   return 3;
+  return 3;
   default:
-   return -1;
+  return -1;
  }
 }
 
@@ -23,21 +23,15 @@ std::string infx2pstfx(std::string inf) {
  TStack<char> stack;
  std::string result;
 
- for (int i = 0; i < inf.length(); i++) {
+for (int i = 0; i < inf.length(); i++) {
   if ((inf[i] >= '0') && (inf[i] <= '9')) {
      result += inf[i];
      result += ' ';
-  }
-  else
-    if (inf[i] == '(') {
+  } else if (inf[i] == '(') {
           stack.push(inf[i]);
-    }
-   else
-     if (pr(inf[i]) > pr(stack.get()) || stack.isEmpty()) {
+    } else if (pr(inf[i]) > pr(stack.get()) || stack.isEmpty()) {
         stack.push(inf[i]);
-     }
-   else 
-     if (inf[i] == ')') {
+     } else if (inf[i] == ')') {
          while (!stack.isEmpty() && stack.get() != '(') {
                 result += stack.get();
                 result += ' ';
@@ -46,8 +40,7 @@ std::string infx2pstfx(std::string inf) {
          if (stack.get() == '(') {
              stack.pop();
          }
-      }
-   else {
+      } else {
     while (!stack.isEmpty() && pr(stack.get()) >= pr(inf[i])) {
            result += stack.get();
            result += ' ';
@@ -73,12 +66,10 @@ std::string infx2pstfx(std::string inf) {
 int eval(std::string pst) {
  TStack<int> stack;
 
- for (int i = 0; i < pst.length(); i++) {
+for (int i = 0; i < pst.length(); i++) {
   if ((pst[i] >= '0') && (pst[i] <= '9')) {
       stack.push(pst[i] - '0');
-  }
-  else
-    if (pst[i] != ' ') {
+  } else if (pst[i] != ' ') {
       int a = stack.get();
       stack.pop();
       int b = stack.get();
@@ -86,16 +77,11 @@ int eval(std::string pst) {
 
       if (pst[i] == '-') {
            stack.push(b - a);
-      }
-      else 
-        if (pst[i] == '+') {
+      } else if (pst[i] == '+') {
             stack.push(b + a);
-        }
-      else 
-        if (pst[i] == '*') {
+        } else if (pst[i] == '*') {
             stack.push(b * a);
-        }
-      else {
+        } else {
        stack.push(b / a);
       }
     }
