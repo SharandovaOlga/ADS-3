@@ -22,7 +22,6 @@ int p(char count) {
 std::string infx2pstfx(std::string inf) {
   TStack<char> stack;
   std::string r;
-  
   for (int i = 0; i < inf.length(); i++) {
     if ((inf[i] >= '0') && (inf[i] <= '9')) {
       r += inf[i];
@@ -47,21 +46,17 @@ std::string infx2pstfx(std::string inf) {
         r += ' ';
         stack.pop();
       }
-      
       stack.push(inf[i]);
     }
   }
-  
   while (!stack.isEmpty()) {
     r += stack.get();
     r += ' ';
     stack.pop();
   }
-  
   while (r[r.length() - 1] == ' ') {
     r = r.substr(0, r.length()-1);
   }
-  
   return r;
 }
 
