@@ -61,8 +61,7 @@ std::string infx2pstfx(std::string inf) {
 }
 
 int eval(std::string pst) {
-  TStack<int> stack;
-  
+  TStack<int> stack;  
   for (int i = 0; i < pst.length(); i++) {
     if ((pst[i] >= '0') && (pst[i] <= '9')) {
       stack.push(pst[i] - '0');
@@ -70,8 +69,7 @@ int eval(std::string pst) {
       int second = stack.get();
       stack.pop();
       int first = stack.get();
-      stack.pop();
-      
+      stack.pop();      
       if (pst[i] == '-') {
         stack.push(first - second);
       } else if (pst[i] == '+') {
@@ -83,6 +81,5 @@ int eval(std::string pst) {
       }
     }
   }
-  
   return stack.get();
 }
