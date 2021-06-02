@@ -21,7 +21,7 @@ switch (p) {
 
 std::string infx2pstfx(std::string inf) {
 TStack<char> stack;
-std::string result;
+std::string r;
 
 for (int i = 0; i < inf.length(); i++) {
   if ((inf[i] >= '0') && (inf[i] <= '9')) {
